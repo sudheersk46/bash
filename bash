@@ -72,22 +72,6 @@ sudo salt I* cmd.run "id -un   && sudo cat /etc/hostname && sudo  dmidecode -t b
   smbclient //ip/softwares -U username%password -c 'cd "mini tool"  ; recurse ; prompt; lcd /tmp/; mget pw102-free.exe'
 sudo salt 'i*' cmd.run  smbclient //ip/softwares -U username%password -c cd \"Ubuntu softwares\"  ; recurse ; prompt; lcd /tmp/; mget ant   
 
-        4.4.0-97-generic
-
-        LENOVO
-
-        7897
-
-        ixed-lap0069
-
-        Ubuntu
-
-        amd64
-
-        80F6
-
-        MP10Q80S
-
-        root
+      
  salt i*  grains.item os manufacturer username productname nodename osarch mem_total  serialnumber kernelrelease | cut -d':' -f2| awk '{if(NR>2)print}' 
  salt i*  grains.item os manufacturer username productname nodename osarch mem_total  serialnumber kernelrelease | awk '{if(NR>3)print}' | cut -d ':' -f 2 | awk '{print }' | pr -ts --column 9 
