@@ -1,9 +1,0 @@
-#!/bin/bash
-echo -n "enter user_name :"
-read user_name
-echo $user_name
-#[ \$username > /dev/null ]
-ldapsearch -LLL -D "i-exceed\sudheer.kumar" -w Password@123   -H  ldap://192.168.1.4 -b dc=i-exceed,dc=com "(sAMAccountName=$user_name)"
-#echo $RESULt
-  #echo "(test=`echo $c_c`)"
-

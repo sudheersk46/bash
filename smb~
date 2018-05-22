@@ -1,4 +1,0 @@
-#!/bin/bash
-
-
-smbclient //192.168.5.235/New -U sudheer.kumar

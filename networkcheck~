@@ -1,5 +1,0 @@
-#!/bin/bash
-
-bash /home/superuser/Documents/scripts/apc
-bash  /home/superuser/Documents/scripts/ill
-bash  /home/superuser/Documents/scripts/prnt
