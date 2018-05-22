@@ -1,0 +1,13 @@
+#!/bin/bash
+
+
+echo -e '\n'
+echo -n  Enter the source file path:
+read spath
+echo -e '\n'
+echo -n Enter Dest Ip:
+read Ip
+echo -e '\n'
+echo -n "enter Destination path:"
+read dpath
+scp $spath superuser@$Ip:$dpath

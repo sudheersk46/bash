@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo -n "enter file Path":
+read Path
+echo "your path is $Path"
+

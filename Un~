@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#echo $(dirname $0)
+#if [ $(dirname $0)="home" ]then;
+#   echo "home";
+#fi;
+echo $(dirname "$0")
+if [ $(dirname $0) == "/home/superuser/Documents/scripts" ]; then
+echo "home"
+else 
+echo "failed"
+fi

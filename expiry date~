@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+echo -n " enter user name':
+read userid
+offset=$((134774*24*60*60))
+expiry=`ldapsearch -p 389   -h i-exceed.com -D "sudheer.kumar@i-exceed.com" -w Password@123  '(sAMAccountName=$userid)' -LLL |grep pwdLast | column | cut -d ":" -f2`
+unixTimestamp=$((expiry/10000000-offset))
+
+echo $unixTimestamp
+
+

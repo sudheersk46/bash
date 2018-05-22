@@ -1,0 +1,36 @@
+#!/bin/bash
+
+echo -e '\n'
+echo -e "\e[1;33m                   "Checking Access point"                \e[0m"
+ 
+
+
+if ping -c 2 192.168.1.144 > /dev/null ;then 
+ echo  -e '\n' 
+ echo  -e "\e[1;32m                   '1st floor AP working' \e[0m";
+else 
+ echo -e '\n'
+ echo  -e "\e[1;31m                   '1st Ap Not-working' \e[0m";
+fi
+if ping -c 2 192.168.1.34 > /dev/null ;then 
+ echo -e '\n'
+ echo -e "\e[1;32m                   '2nd floor AP working' \e[0m";
+else 
+ echo -e '\n'
+ echo -e "\e[1;31m                   '2nd floor Ap Not-working' \e[0m";
+fi
+if ping -c 2 192.168.1.57> /dev/null ;then 
+ echo -e '\n'
+ echo -e "\e[1;32m                   'SJV AP working' \e[0m";
+else 
+ echo -e '\n'
+ echo -e "\e[1;31m                   'SJV AP Not-working' \e[0m";
+ 
+fi
+echo -e '\n'
+
+
+
+
+#192.168.1.34 2nd floor
+#192.168.1.57 sjm

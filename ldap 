@@ -1,0 +1,16 @@
+convert 18digit code to ad readbale
+cpnecrt ymd ldap to hian radale
+18digit.0Z
+https://www.epochconverter.com/ldap
+
+
+
+timestamp dtae *24*60*60
+
+offset=$((134774*24*60*60)) # number of days from Jan 1, 1601 to Jan 1, 1970, converted to seconds
+timestamp=131159832017796720 # you would read this from the file
+unixTimestamp=$((timestamp/10000000-offset)) # convert 100-nanosecond interval to second, adjust for offset
+date -d @$unixTimestamp # display that timestamp; specify a format with +%a%b%c or --rfc-2822
+date -d @$stamp
+
+
