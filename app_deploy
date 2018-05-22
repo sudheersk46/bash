@@ -10,10 +10,10 @@ echo -e '\n'
 echo -n "enter system ip":
 read ip
 #echo -e '\n'
-#echo -n "superuser or root":
+#echo -n "username":
 #read user
- #scp /var/run/user/1000/gvfs/smb-share\:server\=192.168.1.4\,share\=softwares/$src  superuser@$ip:/home/superuser/$dest
-#smbclient //192.168.1.4/$src -U test/qaz#dc5gb
+ #scp /var/run/user/1000/gvfs/smb-share\:server\=ip\,share\=softwares/$src  username@$ip:/homeusername/$dest
+#smbclient //ip/$src -U username/pass
 #lcd /tmp
 #recurse
 #mget $dest

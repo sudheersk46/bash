@@ -5,7 +5,7 @@
 #   echo "home";
 #fi;
 echo $(dirname "$0")
-if [ $(dirname $0) == "/home/superuser/Documents/scripts" ]; then
+if [ $(dirname $0) == "/home/username/Documents" ]; then
 echo "home"
 else 
 echo "failed"

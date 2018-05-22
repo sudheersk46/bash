@@ -5,8 +5,8 @@ echo -n " enter user name":
 read userid
 offset=$((134774*24*60*60))
 echo $offset
-lock=`ldapsearch -p 389   -h i-exceed.com -D "sudheer.kumar@i-exceed.com" -w ssapword@123  '(sAMAccountName='$userid')' -LLL |grep lockout | column | cut -d ":" -f2`
-expiry=`ldapsearch -p 389   -h i-exceed.com -D "sudheer.kumar@i-exceed.com" -w ssapword@123  '(sAMAccountName='$userid')' -LLL |grep pwdLast | column | cut -d ":" -f2`
+lock=`ldapsearch -p 389   -h domain -D "username@domainname" -w password  '(sAMAccountName='$userid')' -LLL |grep lockout | column | cut -d ":" -f2`
+expiry=`ldapsearch -p 389   -h domainname -D "username@domainname" -w password  '(sAMAccountName='$userid')' -LLL |grep pwdLast | column | cut -d ":" -f2`
 
 #echo $expiry
 echo $lock
