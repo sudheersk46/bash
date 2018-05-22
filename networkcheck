@@ -1,5 +1,5 @@
 #!/bin/bash
 
-bash /home/superuser/Documents/scripts/accesspoint
-bash  /home/superuser/Documents/scripts/ill
-bash  /home/superuser/Documents/scripts/prnt
+bash /home/username/scripts/accesspoint
+bash  /home/username/scripts/ill
+bash  /home/username/scripts/prnt
