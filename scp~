@@ -10,4 +10,4 @@ read Ip
 echo -e '\n'
 echo -n "enter Destination path:"
 read dpath
-scp $spath username@$Ip:$dpath
+scp $spath superuser@$Ip:$dpath
