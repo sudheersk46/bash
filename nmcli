@@ -1,0 +1,12 @@
+
+#!/bin/bash
+con=$(nmcli con status  | awk  '{print $1}' | tail -n 1)
+echo $con
+if [ "$con" != "i-exceed-Wifi" ]; then
+ pwd
+nmcli dev disconnect iface wlan0
+echo " connecting to i-exceed -wifi"
+nmcli con up iface wlan0 id i-exceed-Wifi
+#nmcli dev wifi connect i-exceed-Wifi
+fi
+#nmcli dev disconnect iface wlan0
