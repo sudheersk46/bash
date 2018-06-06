@@ -1,0 +1,38 @@
+#!/bin/bash
+
+
+storage=$(ls /root | grep usb)
+if [ "$storage" == "usb-storage.ko" ]; 
+then 
+echo "usb is  blocked"
+echo "unblocking "
+sleep 1s
+mv /root/usb-storage.ko /lib/modules/$(uname -r)/kernel/drivers/usb/storage/
+#echo $storage
+sleep 1s
+modprobe usb-storage
+echo "enabled now"
+sleep 1s
+else 
+{
+ echo " unblocked check"
+sleep 1s
+store=$(ls /lib/modules/$(uname -r)/kernel/drivers/usb/storage | grep usb-storage)
+#echo $store 
+sleep 1s
+
+ if [ "$store" == "usb-storage" ];
+ then 
+ echo " unblocked"
+ else
+ echo "already enabled"
+sleep 1s
+ fi
+echo " usb is working"
+wait
+wait 
+
+}
+fi
+#exit
+
