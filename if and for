@@ -1,3 +1,5 @@
 for f in $(ls  *.txt); do if [ -f $f ]; then cp $f copy ; fi ; done
 
 for f in $(ls  *.txt); do  cp -f $f copy ;  done
+for f in $(ls *.d *.e *.c); do cp -f *.d d ; cp -f *.e e ;cp -f *.c c;  done
+ls -lrt c d e
