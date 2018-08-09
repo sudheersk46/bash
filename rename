@@ -1,0 +1,4 @@
+ rename 's//P/' *  # add p at start
+  rename 's/$/P/' * # add p at the end
+    rename 's/^/P/' * # add p at the end
+    rename 's/\.\*\*1//' *
