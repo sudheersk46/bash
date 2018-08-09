@@ -1,0 +1,3 @@
+for f in $(ls  *.txt); do if [ -f $f ]; then cp $f copy ; fi ; done
+
+for f in $(ls  *.txt); do  cp -f $f copy ;  done
