@@ -1,0 +1,46 @@
+#!/bin/bash
+ 
+IF=$1
+STAT=$2
+ 
+if [ "$IF" == "wlan0" ];
+then
+    case "$2" in
+        up)
+        logger -s "NM Script up triggered"
+         con=$(nmcli connection show --active | grep wireless | awk  '{print $1}' | tail -n 1)
+         echo $con  >> tmp/Videos/network.sh
+         if [[ $con == "-Wifi" ]] || [[ $con == "Wifi-interface" ]] || [[ $con == "-Guest-wifi" ]]; then
+         #pwd
+         #nmcli dev disconnect iface wlan0
+         sudo notify-send -u   critical 'dmcmd'
+         # if [[ $con == "-Wifi" ]] || [[ $con == "-Wifi-interface" ]]; then
+         #  notify-send  $con 
+           else
+           zenity --error --text "connect to  network"
+         #  nmcli dev disconnect iface wlan0
+         #  fi
+         echo $con "?"  >> tmp/Videos/network.sh
+         echo " connecting to wifi" >>  tmp/Videos/nvtwork.sh
+         echo "$(id)" >> tmp/Videos/nvtwork.sh
+         #nmcli con up iface wlan0 id -Wifi
+         #nmcli dev wifi connect Wifi
+         fi
+        ;;
+        down)
+        logger -s "NM Script down triggered"
+        echo hellll >> tmp/Videos/network.sh
+        notify-send "diconnecting"
+        ;;
+        pre-up)
+        logger -s "NM Script pre-up triggered"
+        command3
+        ;;
+        post-down)
+        logger -s "NM Script post-down triggered"
+        command4
+        ;;
+        *)
+        ;;
+    esac
+fi
