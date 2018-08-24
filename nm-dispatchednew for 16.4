@@ -10,12 +10,11 @@ then
         logger -s "NM Script up triggered"
          con=$(nmcli connection show --active | grep wireless | awk  '{print $1}' | tail -n 1)
          echo $con  >> tmp/Videos/network.sh
-         if [[ $con == "-Wifi" ]] || [[ $con == "Wifi-interface" ]] || [[ $con == "-Guest-wifi" ]]; then
+         if [[ $con == "Wifi" ]] || [[ $con == "Wifi-1" ]] || [[ $con == "wifi-2" ]]; then
          #pwd
          #nmcli dev disconnect iface wlan0
          sudo notify-send -u   critical 'dmcmd'
-         # if [[ $con == "-Wifi" ]] || [[ $con == "-Wifi-interface" ]]; then
-         #  notify-send  $con 
+         
            else
            zenity --error --text "connect to  network"
          #  nmcli dev disconnect iface wlan0
