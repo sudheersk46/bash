@@ -1,0 +1,2 @@
+ cat '/tmp/test' | grep -i slave | awk '{print $5}' | uniq -c | sort
+  cat /tmp/test | grep -i slave | awk -F'"'  '{print $14}'| sort -r | uniq -c| sort -r | awk -F" " '{print" process="$2"| repeated times
