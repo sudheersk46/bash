@@ -1,0 +1,1 @@
+ cat '/tmp/test' | grep -i slave | awk '{print $5}' | uniq -c | sort
