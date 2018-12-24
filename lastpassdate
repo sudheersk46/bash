@@ -5,11 +5,13 @@ echo -n " enter user name":
 read userid
 echo -n " enter user bindid":
 read bindid
-echo -n " enter user bindpass":
-read -s   bindpass
-echo -n " enter user domain":
-read -s   domain
-offset=$((134774*24*60*60))
+read -sp " enter user bindpass:" bindpass
+echo -e ''
+#read -s   
+#echo -e " enter user domain":
+read -sp   "domain name:" domain
+echo -e "$domain"
+ offset=$((134774*24*60*60))
 echo -n "$offset"
 lock=`ldapsearch -p 389   -h $domain -D "$bindid@$domain" -w $bindpass '(sAMAccountName='$userid')' -LLL |grep lockout | column | cut -d ":" -f2`
 expiry=`ldapsearch -p 389   -h $domain -D "$bindid@$domain" -w $bindpass  '(sAMAccountName='$userid')' -LLL |grep pwdLast | column | cut -d ":" -f2`
