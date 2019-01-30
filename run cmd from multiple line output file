@@ -1,0 +1,2 @@
+while read line  ; do echo && echo $line && ls $line ; done< '/scripts/line'  | more
+for f in $(cat file); do echo file in $f is  $f &&  echo ; done
