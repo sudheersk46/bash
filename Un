@@ -1,12 +1,15 @@
-#!/bin/bash
+#!/usr/bin/python
 
 #echo $(dirname $0)
 #if [ $(dirname $0)="home" ]then;
 #   echo "home";
 #fi;
-echo $(dirname "$0")
-if [ $(dirname $0) == "/home/username/Documents" ]; then
-echo "home"
-else 
-echo "failed"
-fi
+
+import os
+
+os.system('gnome-terminal -x bash -c "echo hello; read -n1"')
+#if [ $(dirname $0) == "/home/username/Documents/scripts" ]; then
+#echo "home"
+#else 
+#echo "failed"
+#fi
