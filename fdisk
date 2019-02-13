@@ -1,0 +1,6 @@
+
+
+(echo p; echo d; echo 5; echo p; echo d; echo 2; echo p; echo n; echo p; echo ""; echo ""; echo ""; echo t; echo 2; echo L;  echo 82; echo p;echo w; echo q ) | sudo fdisk /dev/sda 
+
+mkswap /dev/sda2
+swapon /dev/sda2
