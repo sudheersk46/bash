@@ -1,0 +1,88 @@
+
+apt-get update
+dig -t SRV _ldap._tcp.I-EXCEED.COM 
+dig -t SRV _ldap._tcp.I-EXCEED.COM | grep -A2 "ANSWER SECTION"
+
+
+echo "p@ssw0rd" | sudo -S bash -c "echo "
+apt-get install -y openssh-server
+apt-get install -y smbclient
+apt-get install -y debconf-utils
+
+debconf-set-selections /tmp/domain/debconf
+#krb5-config	krb5-config/read_conf	boolean	true | sudo -S debconf-set-selections
+#krb5-config	krb5-config/kerberos_servers	string	|  sudo -S debconf-set-selections
+#krb5-config	krb5-config/add_servers_realm	string	I-EXCEED.COM |  sudo -S debconf-set-#selections
+#krb5-config	krb5-config/admin_server	string	 | sudo -S debconf-set-selections
+#krb5-config	krb5-config/default_realm	string	I-EXCEED.COM |  sudo -S debconf-set-#selections
+# Add locations of default Kerberos servers to /etc/krb5.conf?
+#krb5-config	krb5-config/add_servers	boolean	false |  sudo -S debconf-set-selections
+
+
+ 
+
+ apt-get -y install realmd sssd sssd-tools samba-common krb5-user packagekit samba-common-bin samba-libs adcli ntp
+
+
+mv /etc/ntp.conf /etc/ntp.conf.old
+mv /etc/realmd.conf /etc/realmd.conf.old
+mv /etc/krb5.conf /etc/krb5.conf.old
+cp /tmp/domain/ntp.conf /etc
+service ntp restart
+cp /tmp/domain/realmd.conf /etc/
+
+cp /tmp/domain/krb5.conf /etc/
+
+
+
+
+
+echo "qaz#dc5gb" | sudo -S kinit test@I-EXCEED.COM
+klist
+
+
+
+host=$(hostname)
+
+realm --verbose join I-EXCEED.COM --user-principal=$(hostname)/test@I-EXCEED.COM --unattended
+
+
+ mv /etc/sssd/sssd.conf /etc/sssd/sssd.conf.old
+
+bash -c 'cat >> /etc/sssd/sssd.conf <<EOF
+[sssd]
+domains = i-exceed.com
+config_file_version = 2
+services = nss, pam, sudo
+
+[domain/i-exceed.com]
+ad_domain = i-exceed.com
+krb5_realm = I-EXCEED.COM
+realmd_tags = joined-with-adcli
+cache_credentials = True
+id_provider = ad
+krb5_store_password_if_offline = True
+default_shell = /bin/bash
+ldap_id_mapping = True
+use_fully_qualified_names = False
+fallback_homedir = /home/%d/%u
+simple_allow_users = $
+access_provider = ad
+enumerate = True
+EOF
+'
+chmod 600 /etc/sssd/sssd.conf
+
+mv /etc/pam.d/common-account /etc/pam.d/common-account.old
+mv /etc/pam.d/common-session /etc/pam.d/common-session.old
+
+mv /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.old
+cp /tmp/domain/ntp.conf /etc/
+
+cp /tmp/domain/common-account /etc/pam.d/
+cp /tmp/domain/common-session /etc/pam.d/
+cp /tmp/domain/lightdm.conf /etc/lightdm/
+
+
+service sssd restart
+reboot
