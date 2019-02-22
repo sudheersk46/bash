@@ -1,0 +1,28 @@
+#!/bin/bash
+
+clear 
+
+
+echo -------------------------------------------------
+cat /etc/hosts  | head -n 2
+cat /etc/hostname 
+echo 
+echo -n " enter the hostname:"
+read host
+
+echo $host > /etc/hostname
+sleep 3
+sed -i.bak '/127.0.1.1/d' /etc/hosts
+echo 'changing hostname.....'
+echo 
+sleep 1
+sed -i.bak "/127.0.0.1/a 127.0.1.1    $host" /etc/hosts
+ 
+sleep 1
+echo 
+cat /etc/hosts  | head -n 2
+echo      
+
+cat /etc/hostname
+
+hostnamectl set-hostname $host
