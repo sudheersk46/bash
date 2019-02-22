@@ -1,7 +1,7 @@
 
 apt-get update
-dig -t SRV _ldap._tcp.I-EXCEED.COM 
-dig -t SRV _ldap._tcp.I-EXCEED.COM | grep -A2 "ANSWER SECTION"
+dig -t domain
+dig -t domain| grep -A2 "ANSWER SECTION"
 
 
 echo "p@ssw0rd" | sudo -S bash -c "echo "
@@ -12,9 +12,9 @@ apt-get install -y debconf-utils
 debconf-set-selections /tmp/domain/debconf
 #krb5-config	krb5-config/read_conf	boolean	true | sudo -S debconf-set-selections
 #krb5-config	krb5-config/kerberos_servers	string	|  sudo -S debconf-set-selections
-#krb5-config	krb5-config/add_servers_realm	string	I-EXCEED.COM |  sudo -S debconf-set-#selections
+#krb5-config	krb5-config/add_servers_realm	string	domain |  sudo -S debconf-set-#selections
 #krb5-config	krb5-config/admin_server	string	 | sudo -S debconf-set-selections
-#krb5-config	krb5-config/default_realm	string	I-EXCEED.COM |  sudo -S debconf-set-#selections
+#krb5-config	krb5-config/default_realm	string	domain|  sudo -S debconf-set-#selections
 # Add locations of default Kerberos servers to /etc/krb5.conf?
 #krb5-config	krb5-config/add_servers	boolean	false |  sudo -S debconf-set-selections
 
@@ -37,14 +37,14 @@ cp /tmp/domain/krb5.conf /etc/
 
 
 
-echo "qaz#dc5gb" | sudo -S kinit test@I-EXCEED.COM
+echo "qaz#dc5gb" | sudo -S kinit test
 klist
 
 
 
 host=$(hostname)
 
-realm --verbose join I-EXCEED.COM --user-principal=$(hostname)/test@I-EXCEED.COM --unattended
+realm --verbose join I-EXCEED.COM --user-principal=$(hostname)/test@domain --unattended
 
 
  mv /etc/sssd/sssd.conf /etc/sssd/sssd.conf.old
@@ -55,9 +55,9 @@ domains = i-exceed.com
 config_file_version = 2
 services = nss, pam, sudo
 
-[domain/i-exceed.com]
-ad_domain = i-exceed.com
-krb5_realm = I-EXCEED.COM
+[domain/dmoain]
+ad_domain = dmoain
+krb5_realm = domain
 realmd_tags = joined-with-adcli
 cache_credentials = True
 id_provider = ad
