@@ -44,14 +44,14 @@ klist
 
 host=$(hostname)
 
-realm --verbose join I-EXCEED.COM --user-principal=$(hostname)/test@domain --unattended
+realm --verbose join domain --user-principal=$(hostname)/test@domain --unattended
 
 
  mv /etc/sssd/sssd.conf /etc/sssd/sssd.conf.old
 
 bash -c 'cat >> /etc/sssd/sssd.conf <<EOF
 [sssd]
-domains = i-exceed.com
+domains = domain
 config_file_version = 2
 services = nss, pam, sudo
 
