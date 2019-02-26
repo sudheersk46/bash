@@ -1,0 +1,16 @@
+debconf-set-selections /tmp/soft/java
+debconf-set-selections /tmp/soft/mysql
+debconf-set-selections /tmp/soft/mysql-apt
+
+dpkg -i /tmp/soft/mysql-apt-config_0.8.3-1_all.deb
+mv /etc/apt/sources.list.d/rabbitvcs-ubuntu-ppa-xenial.list /etc/apt/sources.list.d/rabbitvcs-ubuntu-ppa-xenial.list.back 
+add-apt-repository -y ppa:webupd8team/java
+
+apt-get update
+apt-get install -y ant maven
+apt-get install -y rabbitvcs-cli rabbitvcs-core rabbitvcs-gedit rabbitvcs-nautilus rabbitvcs-nautilus rabbitvcs-cli
+sudo apt-get install -y  oracle-java8-installer
+sudo apt-get install -y oracle-java8-set-default
+apt-get install -y mysql-server-5.7 mysql-workbench-community
+
+
