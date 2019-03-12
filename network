@@ -1,0 +1,18 @@
+bash -c " cat > /etc/NetworkManager/dispatcher.d/ssid << EOF 
+#!/bin/sh -e
+IF=\\\$1
+STATUS=\\\$2
+
+case "\\\$2" in
+        up)
+        logger -s "\NM Script up $IF triggered\"
+        bash /root/network
+        ;;
+        down)
+        logger -s \"NM Script down $IF triggered\"
+        ;;
+        *)
+        ;;
+esac
+EOF
+"
