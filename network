@@ -16,3 +16,15 @@ case "\\\$2" in
 esac
 EOF
 "
+bash -c "cat > net << EOF
+!#/bin/bash
+
+con=\\\$(nmcli con status | cut -d ' ' -f1 | grep wifi)
+dev=\\\$(nmcli con  status | awk ' {print $4}' | tail -n 1)
+if [[ \\\$con == \"wifi\" ]]; then 
+echo ""
+else
+ nmcli dev disconnect iface \\\$dev
+fi
+EOF
+"
