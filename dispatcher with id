@@ -1,0 +1,26 @@
+#usrr=$(cat /var/log/auth.log | grep "authentication success" | cut -d "=" -f8  | tail -n 1)
+us=$(w | awk '{print $1}' | tail -n 1)
+gr=$(id $us | grep -o 01541)
+
+
+con=$(nmcli connection show --active | grep -o  -Wifi | tail -n 1)
+dev=$(nmcli device status | grep wifi | cut -d ' ' -f1)
+#echo 
+#echo 
+echo $con
+echo $us
+echo $gr
+if [[ $gr = "it" ]];then
+         date >> /tmp/tttt
+         echo $gr >> /tmp/statusss
+         echo user is in $gr group >> /tmp/tttt
+         else
+         echo user is not in $gr group >> /tmp/tttt
+#         bash /root/network
+  
+if [[ $con == "-Wifi" ]]; then 
+echo 
+else
+ nmcli device disconnect  $dev
+fi
+fi
