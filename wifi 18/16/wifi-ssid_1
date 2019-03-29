@@ -29,25 +29,29 @@ if [[ $ver == "18.04" ]] || [[ $ver == "16.04" ]]; then
 bash -c "cat > /root/network << EOF 
 log
 us=\\\$(w | awk '{print \\\$1}' | tail -n 1)
-gr=\\\$(id \\\$us | grep -o 44)
+log=\\\$(who | head -n 1 | cut -d ' ' -f 1)
+gro=\\\$(id \\\$log | grep -o 44)
 #con=\\\$(nmcli connection show --active | grep -o  wifi-Wifi | tail -n 1)
-con=\\\$(nmcli connection show --active | awk '{print $1}' | tail -n 1)
+con=\\\$(nmcli connection show --active | awk '{print \\\$1}' | tail -n 1)
 dev=\\\$(nmcli device status | grep wifi | cut -d ' ' -f1)
 #echo $con
 #echo $dev
-logger -s "\\\$us"
-logger -s "\\\$gr"
-if [[ \\\$gr = \"44\" ]];then
+logger -s \"networklog \\\$us, \\\$log, \\\$gro, \\\$con, \\\$dev \"
+logger -s \"networklog \\\$us \"
+logger -s \"NETWORKLOG \\\$grO \"
+if [[ \\\$gro = \"44\" ]];then
          date >> /tmp/tttt
-         echo \\\$gr >> /tmp/statusss
-         echo user is in \\\$gr group >> /tmp/tttt
+         logger -s  \"networklog \\\$gro\"
+         echo user is in \\\$gr group 
          else
          echo user is not in \\\$gr group >> /tmp/tttt
 #         bash /root/network
   
 if [[ \\\$con == \"wifi-Wifi\" ]]; then 
+logger -s  \"networklog \\\$con \"
 echo ""
 else
+logger -s  \"networklog \\\$dev \"
  nmcli device disconnect  \\\$dev
 fi
 fi
