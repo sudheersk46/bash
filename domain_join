@@ -4,7 +4,7 @@ dig -t domain
 dig -t domain| grep -A2 "ANSWER SECTION"
 
 
-echo "p@ssw0rd" | sudo -S bash -c "echo "
+echo "password" | sudo -S bash -c "echo "
 apt-get install -y openssh-server
 apt-get install -y smbclient
 apt-get install -y debconf-utils
@@ -37,7 +37,7 @@ cp /tmp/domain/krb5.conf /etc/
 
 
 
-echo "qaz#dc5gb" | sudo -S kinit test
+echo "password" | sudo -S kinit test
 klist
 
 
