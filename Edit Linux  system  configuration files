@@ -1,3 +1,17 @@
 Dconf
 
 Gsettings
+
+Autostart
+
+Add script or application in
+
+/etc/autostart/scree.desktop
+
+Apply changes to users on login
+
+Add script or cmd in 
+
+Bash.bashrc
+
+
