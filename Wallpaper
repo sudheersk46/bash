@@ -45,6 +45,9 @@ Copy files and pic in some folder
 
 Use gsettings to apply xml files 
 
+gsettings get org.gnome.desktop.background picture-uri
+'file:///usr/share/backgrounds/warty.xml
+
 To restrict change of wallpapper
 
 Add gsetting cmd in .bashrc file
