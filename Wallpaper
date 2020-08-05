@@ -1,0 +1,50 @@
+gsettings get org.gnome.desktop.background picture-uri
+'file:///usr/share/backgrounds/warty-final-ubuntu.png'
+
+
+Copy files to some unkonwn path
+Like
+
+/etc/back/images
+
+
+Default path /usr/share/backgrounds
+
+Copy files and pic in some folder
+
+<background>
+  <starttime>
+    <year>2012</year>
+    <month>01</month>
+    <day>01</day>
+    <hour>00</hour>
+    <minute>00</minute>
+    <second>00</second>
+  </starttime>
+  <static>
+    <duration>300.0</duration>
+    <file>.local/share/backgrounds/wallpaper1/Beautiful-Nature.jpg</file>
+  </static>
+  <transition>
+    <duration>5.0</duration>
+    <from>.local/share/backgrounds/wallpaper1/Beautiful-Nature.jpg</from>
+    <to>.local/share/backgrounds/wallpaper1/Ubuntu.jpg</to>
+  </transition>
+  <static>
+    <duration>300.0</duration>
+    <file>.local/share/backgrounds/wallpaper1/Ubuntu.jpg</file>
+  </static>
+  <transition>
+    <duration>5.0</duration>
+    <from>.local/share/backgrounds/wallpaper1/Ubuntu.jpg</from>
+    <to>.local/share/backgrounds/wallpaper1/Beautiful-Nature.jpg</to>
+  </transition>
+</background>
+
+
+
+Use gsettings to apply xml files 
+
+To restrict change of wallpapper
+
+Add gsetting cmd in .bashrc file
